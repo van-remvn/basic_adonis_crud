@@ -6,7 +6,7 @@ Basic CRUD using Node Js Framework
 
 ```bash
 # clone to current directory
-git clone https://github.com/gempong/basic-crud-using-adonis.js.git
+git clone https://github.com/van-remvn/basic_adonis_crud
 
 # install dependencies
 npm install
