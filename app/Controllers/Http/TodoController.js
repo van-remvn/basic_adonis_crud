@@ -55,8 +55,7 @@ class TodoController {
   }
 
   async update({ request, response, view, params, session }) {
-
-    const { title, description } = request.all();
+    const { title, description, is_completed } = request.all();
     const file = request.file('img');
     try {
       const id = params.id;
@@ -64,6 +63,9 @@ class TodoController {
 
       todo.title = request.input('title');
       todo.description = request.input('description');
+      todo.is_completed = request.input('is_completed')[0];
+
+      console.log(request.input('is_completed')[0]);
 
       if (file !== null) {
         const image = request.file('img', {

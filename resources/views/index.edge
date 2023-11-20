@@ -42,13 +42,23 @@
                 @endif
                 <div class="card-body">
                   <h5 class="card-title">{{ todo.title }}</h5>
-                  @if( todo.img !== null)
+                  @if( todo.description !== null)
                     <p class="card-text">{{ todo.description }}</p>
                   @else
                     <p class="card-text">No Description</p>
                   @endif
+
+                  {{--  <p><button class="btn btn-outline-secondary">{{ todo.created_at }}</button></p>  --}}
+                  <p>
+                    <button class="btn btn-outline-secondary">
+                      2023/12/30
+                    </button>
+                  </p>
+                  
+                  
                   <a href="{{ route('Todo.edit', { id : todo.id }) }}" class="btn btn-primary mb-1 d-xs-block">Edit</a>
                   <a href="{{ route('Todo.delete', { id : todo.id }) }}" class="btn btn-danger mb-1 d-xs-block">Delete</a>
+                  <input style="float: right; margin-top: 15px;" id="myCheckbox" type="checkbox" name="is_completed" {{ todo.is_completed ? 'checked' : ''}}>
                 </div>
               </div>
             </div>
@@ -59,4 +69,7 @@
     </div>
   </div>
 </section>
+@endyield
+@yield('script')
+  
 @endyield

@@ -9,6 +9,7 @@ class TodoSchema extends Schema {
       table.increments()
       table.string('title', 200)
       table.string('description').nullable()
+      table.boolean('is_completed').defaultTo(0)
       table.string('img').nullable()
       table.timestamps()
     })

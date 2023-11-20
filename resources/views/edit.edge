@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-10 mx-auto">
         <h2>Edit To Do</h2>
-        <form action="{{ route('Todo.update', { id : todo.id} ) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('Todo.update', { id : todo.id} ) }}" method="POST" enctype="multipart/form-data" onsubmit="addDefaultValue()">
           {{ csrfField() }}
           <div class="form-group">
             <label for="title">Title</label>
@@ -24,6 +24,13 @@
             <label for="file">File</label>
             <input type="file" class="form-control-file" name="img">
           </div>
+          <div class="form-group">
+            <label for="description">Completed</label>
+            <input id="myCheckbox" type="checkbox" name="is_completed" {{ todo.is_completed ? 'checked' : ''}} value="1">
+            
+            <!-- Hidden input field for default value -->
+            <input id="myCheckboxHidden" type="hidden" name="is_completed">
+          </div>
           <button type="submit" class="btn btn-primary">Submit</button>
           <a class="btn btn-secondary" href="{{ route('Todo.index') }}">Cancel</a>
         </form>
@@ -32,3 +39,19 @@
   </div>
 </section>
 @endyield
+@yield('script')
+<script type="text/javascript">
+  function addDefaultValue() {
+    console.log('test function');
+    console.log(document.getElementById('myCheckbox').checked);
+    // Check if the checkbox is unchecked
+    if (!document.getElementById('myCheckbox').checked) {
+      // Set the default value for the hidden input field
+      document.getElementById('myCheckboxHidden').value = '0';
+    }
+  }
+</script>
+  
+@endyield
+
+
